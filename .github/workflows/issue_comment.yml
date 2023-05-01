@@ -5,6 +5,7 @@ on:
     types: [opened]
 
 jobs:
+  permissions: write-all
   comment-with-actions:
     runs-on: ubuntu-latest 
     steps:
