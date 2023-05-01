@@ -5,8 +5,9 @@ on:
     types: [opened]
 
 jobs:
-  permissions: write-all
+  
   comment-with-actions:
+    permissions: write-all
     runs-on: ubuntu-latest 
     steps:
       - name: "dump github context"
