@@ -21,4 +21,18 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: |
             This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
-            
+  
+  comment-with-api:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Create Comment with API
+        run: |
+          gh api -X POST \
+            http://api.github.com/repo/${{ORGANIZATION}/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments \
+            -f body="Comment but gtrom the API call not actions"
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORGANIZATION: ${{ github.events.organization.login }}
+          REPOSITORY: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }} 
